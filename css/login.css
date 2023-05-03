@@ -21,7 +21,7 @@ section .bg
     position: absolute;
     top: 0;
     left: 0;
-    width: 3000%;
+    width: 100%;
     height: 100%;
     object-fit: fill;
     pointer-events: none;
@@ -74,11 +74,11 @@ section .girl
     border: 1px solid #fff;
     border-bottom: 1px solid  rgba(255, 255, 255, 0.5);
     border-right: 1px solid  rgba(255, 255, 255, 0.5);
-    border-radius: 40px;
+    border-radius: 20px;
     width: 500px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: -20px;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 .login h2
@@ -88,7 +88,7 @@ section .girl
     text-align: center;
     font-size: 3.5em;
     font-weight: 600;
-    color: #16a085;
+    color: #121313;
     margin-bottom: 0px;
 }
 .login .inputBox
@@ -102,7 +102,7 @@ section .girl
     padding: 15px 20px;
     outline: none;
     font-size: 1.85em;
-    color: #16a085;
+    color: #121313;
     border-radius: 5px;
     background: #fff;
     border: none;
@@ -110,14 +110,14 @@ section .girl
 }
 .login .inputBox ::placeholder
 {
-    color: #16a085;
+    color: #121313;
 }
 .login .inputBox #btn
 {
     position: relative;
     border: none;
     outline: none;
-    background: #16a085;
+    background: #121313;
     color: #fff;
     cursor: pointer;
     font-size: 1.90em;
@@ -126,7 +126,7 @@ section .girl
 }
 .login .inputBox #btn:hover
 {
-    background: #07f3c4;
+    background: rgb(92, 95, 94);
 }
 .login .group
 {
@@ -136,7 +136,7 @@ section .girl
 .login .group a
 {
     font-size: 1.70em;
-    color: #16a085;
+    color: #121313;
     font-weight: 500;
     text-decoration: none;
 }
