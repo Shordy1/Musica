@@ -106,7 +106,7 @@ CREATE TABLE despacho (
 
 
 
-#inseciones 
+#inserciones
 INSERT INTO rol (nombre_rol) VALUES ("Bodeguero"); 
 INSERT INTO rol (nombre_rol) VALUES ("Vendedor"); 
 INSERT INTO trabajador ( rut, correo, contra, nombre, id_rol) VALUES ("20168548-2","ad@ad.cl","1234","Bodeguero",1);
