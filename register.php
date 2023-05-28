@@ -16,6 +16,17 @@
       $direccion = $_POST["direccion"];
       $contra = $_POST["contra"];
 
+      $statement2 = $conn->prepare("SELECT * FROM cliente WHERE correo = :correo");
+      $statement2->bindParam(":correo", $correo);
+      $statement2->execute();
+      if ($statement2->rowCount() > 0) {
+
+
+        $error = "Ya existe una cuenta con ese correo";
+        
+        
+    } else {
+
       $statement = $conn->prepare("INSERT INTO cliente (rut_cliente, correo, nombre, contra, direccion) VALUES (:rut, :nombre, :correo, :direccion, :contra)");
       $statement->bindParam(":rut", $_POST["rut"]);
       $statement->bindParam(":nombre", $_POST["nombre"]);
@@ -30,6 +41,11 @@
 
 
       header("Location: index.php");
+
+    }
+
+
+      
     }
   }
 ?>
