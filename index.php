@@ -1,8 +1,6 @@
 <?php
-
 require "bdCreate.php";
-
-
+session_start();
 ?>
 
 
@@ -15,16 +13,29 @@ require "bdCreate.php";
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/msjE.css">
+    <script src="ruta/al/msj.js"></script>
 </head>
 <body>
+   
     <!-- Header section starts-->
+
+    
+
+
     <header class="header">
-        <a href="index.html" class="logo"> <i class="fa-sharp fa-solid fa-music fa-bounce">USIC.</i></a>
+        
+    <div id="snackbar"></div>
+
+    
+
+
+        <a href="index.php" class="logo"> <i class="fa-sharp fa-solid fa-music fa-bounce">USIC.</i></a>
         <nav class="navbar">
             <a href="#home"><i class="fa-solid fa-house fa-beat"></i> Inicio</a>
             <a href="#about"><i class="fa-solid fa-info fa-beat"></i> Información </a>
             <a href="#review"><i class="fa-solid fa-star fa-beat"></i> Reseña</a>
-            <a href="tienda.html"><i class="fa-solid fa-shop fa-beat"></i>Tienda</a>
+            <a href="tienda.php"><i class="fa-solid fa-shop fa-beat"></i>Tienda</a>
         </nav>
         <div id="menu-btn" class="fas fa-bars"></div>
     </header>
@@ -38,7 +49,7 @@ require "bdCreate.php";
     <div class="content">
         <h3>Garantia y calidad</h3>
         <p>¿Quiere comprar un instrumento musical? ¡Para que esperar, haga click abajo para comprar el suyo ahora!.</p>
-        <a href="login.html" class="btn"> Iniciar sesión <span class="fas fa-chevron-right"></span></a>
+        <a href="login.php" class="btn"> Iniciar sesión <span class="fas fa-chevron-right"></span></a>
     </div>
 </section>
     <!-- Home section end-->
@@ -142,6 +153,25 @@ require "bdCreate.php";
     </section>
     <!-- Review section end-->
 
+
+
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var snackbar = document.getElementById('snackbar');
+            var mensajeExito = "<?php echo isset($_SESSION['mensaje_exito']) ? $_SESSION['mensaje_exito'] : ''; ?>";
+
+            if (mensajeExito !== '') {
+                snackbar.textContent = mensajeExito;
+                snackbar.classList.add('show');
+                setTimeout(function() {
+                    snackbar.remove();
+                    <?php unset($_SESSION['mensaje_exito']); ?>
+                    
+                }, 5500);
+            }
+        });
+    </script>
+
     <!-- Footer section starts-->
 
     <section class="footer">
@@ -169,12 +199,14 @@ require "bdCreate.php";
 
     <!-- Footer section end-->
 
-      <!--loader section-->
-      <div class="loader-container">
+    <!--loader section-->
+    <div class="loader-container">
         <img src="static/IMG/01.gif" alt="">
     </div>
         <!--loader section ends-->
 
     <script src="static/js/script.js"></script>
+    
+
 </body>
 </html>
