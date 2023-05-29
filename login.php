@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuario = $_POST["usuario"];
         $contrasena = $_POST["contrasena"];
 
-        $statement = $conn->prepare("SELECT * FROM cliente WHERE nombre = :usuario AND contra = :contrasena");
+        $statement = $conn->prepare("SELECT * FROM cliente WHERE correo = :usuario AND contra = :contrasena");
         $statement->bindParam(":usuario", $usuario);
         $statement->bindParam(":contrasena", $contrasena);
         $statement->execute();

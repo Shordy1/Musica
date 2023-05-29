@@ -7,8 +7,6 @@
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["rut"]) || empty($_POST["nombre"]) ||  empty($_POST["correo"]) ||  empty($_POST["direccion"]) ||  empty($_POST["contra"]) ||  empty($_POST["repContra"]) ) {
       $error = "Rellene los campos.";
-    } else if ( ($_POST["contra"]) !=  ($_POST["repContra"])) {
-      $error = "Las contraseñas no coninciden";
     } else {
       $rut = $_POST["rut"];
       $nombre = $_POST["nombre"];
@@ -27,7 +25,7 @@
         
     } else {
 
-      $statement = $conn->prepare("INSERT INTO cliente (rut_cliente, correo, nombre, contra, direccion) VALUES (:rut, :nombre, :correo, :direccion, :contra)");
+      $statement = $conn->prepare("INSERT INTO cliente (rut_cliente, correo, nombre, contra, direccion) VALUES (:rut, :correo, :nombre, :contra, :direccion)");
       $statement->bindParam(":rut", $_POST["rut"]);
       $statement->bindParam(":nombre", $_POST["nombre"]);
       $statement->bindParam(":correo", $_POST["correo"]);
@@ -60,6 +58,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <link rel="stylesheet" href="static/css/login.css">
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/error.css">
@@ -80,7 +79,7 @@
         
         <img src="static/img/back.jpg" class="bg">
 
-        <form method="POST" action="register.php">
+        <form method="POST" action="register.php"  name="form1" id="form1" style="margin-right: 2%; ">
             <div class="login">
                 <h2>Crear cuenta</h2>
                 <div class="inputBox">
@@ -105,16 +104,26 @@
                     <input type="submit" value="Crear" id="btn">
                 </div>
                 <?php if ($error): ?>
-                    <p   class="error-box">
+                    <p   class="error-box" id="errorM" >
                          <?= $error ?>
                     </p>
                 <?php endif ?>
-            </div>
-        </form>
 
-       
+                
+                
+            </div>
+            
+        </form>
+        
+
+        
+        <p class="login" id="mensaje-error" class="error-message" style="display: none;" style="margin-left: 5%; "> </p>
 
         
     </section>
+
+
+    
+    <script src="static/js/Validacion.js"></script>
 </body>
 </html>
