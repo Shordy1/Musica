@@ -1,4 +1,3 @@
-
 <?php
 require "bdCreate.php";
 
@@ -11,17 +10,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuario = $_POST["usuario"];
         $contrasena = $_POST["contrasena"];
 
-        $statement = $conn->prepare("SELECT * FROM cliente WHERE correo = :usuario AND contra = :contrasena");
+        $statement = $conn->prepare("SELECT contra FROM cliente WHERE correo = :usuario ");
         $statement->bindParam(":usuario", $usuario);
-        $statement->bindParam(":contrasena", $contrasena);
+
         $statement->execute();
 
         if ($statement->rowCount() > 0) {
+            $row = $statement->fetch();
+            $hashedPassword = $row['contra'];
 
-            session_start();
-            $_SESSION['mensaje_exito'] = 'Inicio de sesión exitoso';
-            header("Location: index.php");
-            
+            // Verificar la contraseña
+            if (password_verify($contrasena, $hashedPassword)) {
+                session_start();
+                $_SESSION['mensaje_exito'] = 'Inicio de sesión exitoso';
+                header("Location: index.php");
+            } else {
+                $error = "Usuario o contraseña incorrectos";
+            }
         } else {
             $error = "Usuario o contraseña incorrectos";
         }

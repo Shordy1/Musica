@@ -82,7 +82,7 @@ CREATE TABLE cliente (
     rut_cliente VARCHAR(10),
     correo VARCHAR(100),
     nombre VARCHAR(100),
-    contra VARCHAR(30),
+    contra VARCHAR(255),
     direccion VARCHAR(100),
     id_carrito_compra INT,
     FOREIGN KEY (id_carrito_compra) REFERENCES carrito_compra(id_carrito_compra)

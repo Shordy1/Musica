@@ -24,13 +24,13 @@
         
         
     } else {
-
+      $hash = password_hash($contra, PASSWORD_DEFAULT);
       $statement = $conn->prepare("INSERT INTO cliente (rut_cliente, correo, nombre, contra, direccion) VALUES (:rut, :correo, :nombre, :contra, :direccion)");
       $statement->bindParam(":rut", $_POST["rut"]);
       $statement->bindParam(":nombre", $_POST["nombre"]);
       $statement->bindParam(":correo", $_POST["correo"]);
       $statement->bindParam(":direccion", $_POST["direccion"]);
-      $statement->bindParam(":contra", $_POST["contra"]);
+      $statement->bindParam(":contra", $hash);  
       $statement->execute();
     
       
