@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/static/css/tienda.css">
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="static/css/tienda.css">
+    <link rel="stylesheet" href="static/css/style.css">
     <title>Document</title>
 </head>
 <body>
     <!-- Header section starts-->
     <header class="header">
-        <a href="index.html" class="logo"> <i class="fa-sharp fa-solid fa-music fa-bounce">USIC.</i></a>
+        <a href="index.php" class="logo"> <i class="fa-sharp fa-solid fa-music fa-bounce">USIC.</i></a>
         <nav class="navbar">
-            <a href="index.html"><i class="fa-solid fa-house fa-beat"></i> Inicio</a>
-            <a href="tienda.html"><i class="fa-solid fa-shop fa-beat"></i>Tienda</a>
+            <a href="index.php"><i class="fa-solid fa-house fa-beat"></i> Inicio</a>
+            <a href="tienda.php"><i class="fa-solid fa-shop fa-beat"></i>Tienda</a>
         </nav>
         <div id="menu-btn" class="fas fa-bars"></div>
     </header>
@@ -23,7 +23,7 @@
     <!-- Home section starts-->
     <section class="home" id="home">    
         <div class="image">
-            <img src="/static/img/tienda.jpg" alt="">
+            <img src="static/img/tienda.jpg" alt="">
         </div>
         <div class="content">
             <p>¿Quiere comprar un instrumento musical? ¡Para que esperar, haga click abajo para comprar el suyo ahora!.</p>
@@ -36,55 +36,55 @@
         <div class="contenedor-items">
             <div class="item">
                 <span class="titulo-item">Violín Freeman Classic</span>
-                <img src="/static/img/violin.webp" alt="" class="img-item">
+                <img src="static/img/violin.webp" alt="" class="img-item">
                 <span class="precio-item">$99.990</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
                 <span class="titulo-item">Piano Digital Nux Wk-310</span>
-                <img src="/static/img/piano.webp" alt="" class="img-item">
+                <img src="static/img/piano.webp" alt="" class="img-item">
                 <span class="precio-item">$469.900</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
                 <span class="titulo-item">Flauta Piccolo Allegro C 6 All6465S</span>
-                <img src="/static/img/flauta.jpg" alt="" class="img-item">
+                <img src="static/img/flauta.jpg" alt="" class="img-item">
                 <span class="precio-item">$159.900</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
                 <span class="titulo-item">Batería acústica Tama Imperialstar IE58H6W 6 piezas HBK</span>
-                <img src="/static/img/bateria.webp" alt="" class="img-item">
+                <img src="static/img/bateria.webp" alt="" class="img-item">
                 <span class="precio-item">$599.900</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
                 <span class="titulo-item">SAXO ALTO NEGRO/ DORADO ETINGER</span>
-                <img src="/static/img/saxo.jpg" alt="" class="img-item">
+                <img src="static/img/saxo.jpg" alt="" class="img-item">
                 <span class="precio-item">$498.990</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
                 <span class="titulo-item">Teclado Tonic de 61 Teclas TON-250</span>
-                <img src="/static/img/teclado.webp" alt="" class="img-item">
+                <img src="static/img/teclado.webp" alt="" class="img-item">
                 <span class="precio-item">$59.900</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
                 <span class="titulo-item">GUITARRA ACUSTICA NYLON 39" ARCG44 SB</span>
-                <img src="/static/img/guitarra.jpg" alt="" class="img-item">
+                <img src="static/img/guitarra.jpg" alt="" class="img-item">
                 <span class="precio-item">$57.900</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
                 <span class="titulo-item">BAJO COLOR SUNBURST-</span>
-                <img src="/static/img/electrica.webp" alt="" class="img-item">
+                <img src="static/img/electrica.webp" alt="" class="img-item">
                 <span class="precio-item">$191.990</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
                 <span class="titulo-item">Banyo electroacústico 8 cuerdas Meistehaft</span>
-                <img src="/static/img/banyo.webp" alt="" class="img-item">
+                <img src="static/img/banyo.webp" alt="" class="img-item">
                 <span class="precio-item">$144.990</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
@@ -142,7 +142,7 @@
     </section>
     
     <!--Scripts-->
-    <script src="/static/js/script.js"></script>
-    <script src="/static/js/app.js"></script>
+    <script src="static/js/script.js"></script>
+    <script src="static/js/app.js"></script>
 </body>
 </html>

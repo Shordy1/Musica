@@ -101,7 +101,7 @@ session_start();
 
    
     <!-- Review section starts-->
-    <section class="review" id="review">
+    <!-- <section class="review" id="review">
         <h1 class="heading"> Opinión del <span>cliente</span></h1>
         <div class="box-container">
             <div class="box">
@@ -142,7 +142,7 @@ session_start();
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
+                    <i class="fas fa-star"></i>
                 </div>
                 <p class="text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit aliquam nisi nemo ipsa, architecto iusto voluptas omnis,
@@ -150,7 +150,7 @@ session_start();
                 </p>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Review section end-->
 
 

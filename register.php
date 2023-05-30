@@ -117,7 +117,7 @@
         
 
         
-        <p class="login" id="mensaje-error" class="error-message" style="display: none;" style="margin-left: 5%; "> </p>
+        <h2 class="error-message login" id="mensaje-error"  style="display: none;" style="margin-left: 5%; "> </h2>
 
         
     </section>

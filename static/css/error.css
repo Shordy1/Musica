@@ -11,13 +11,13 @@
   }
   
   .error-message {
-  
-    background-color: #ffcccc;
+    
+    background-color: rgba(rgba(250, 10, 10, 0.5), red, red, 0.6);
     color: red;
     padding: 10px;
     border: 1px solid red;
     margin-top: 10px;
-
+    opacity: 0.6;
     
     
   }
