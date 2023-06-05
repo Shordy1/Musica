@@ -1,3 +1,8 @@
+<?php 
+    require "bdCreate.php";
+    $producto = $conn->query("SELECT * FROM producto");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +39,14 @@
     <!-- Contenedor de elementos -->
     <section class="contenedor">
         <div class="contenedor-items">
+            <?php foreach( $producto as $productos): ?>
+                <div class="item">
+                <span class="titulo-item"><?= $productos["nombre"] ?></span>
+                <!-- <img src="static/img/violin.webp" alt="" class="img-item"> -->
+                <span class="precio-item">$99.9900</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <?php  endforeach ?>
             <div class="item">
                 <span class="titulo-item">Violín Freeman Classic</span>
                 <img src="static/img/violin.webp" alt="" class="img-item">
