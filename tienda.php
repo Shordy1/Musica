@@ -108,7 +108,8 @@ if (isset($_SESSION['id_usuario'])){
 
             <a style="text-align: center;" href="producto.php?id_producto=<?= $producto["id_producto"] ?>" class="boton-item">Ver producto</a>
             <?php if ($rol !=1):?>
-              <a style="text-align: center;" href="borrar-stock.php?id_producto=<?= $producto["id_producto"] ?>" class="boton-item">Borrar</a>
+              <a style="text-align: center;" href="borrar-prod.php?id_producto=<?= $producto["id_producto"] ?>" class="boton-item">Borrar</a>
+              <a style="text-align: center;" href="edit-prod.php?id_producto=<?= $producto["id_producto"] ?>" class="boton-item">Editar</a>
             <?php endif ?>        
             
         </div>
