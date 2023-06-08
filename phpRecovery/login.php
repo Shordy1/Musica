@@ -19,25 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $row = $statement->fetch();
             $hashedPassword = $row['contra'];
 
-
-            $statement2 = $conn->prepare("SELECT id_cliente FROM cliente WHERE correo = :usuario ");
-            $statement2->bindParam(":usuario", $usuario);
-            $statement2->execute();
-            $row2 = $statement2->fetch();
-            $id_user = $row2['id_cliente'];
-
-
-            $statement3 = $conn->prepare("SELECT nombre FROM cliente WHERE correo = :usuario ");
-            $statement3->bindParam(":usuario", $usuario);
-            $statement3->execute();
-            $row3 = $statement3->fetch();
-            $nombre = $row3['nombre'];
-
             // Verificar la contraseña
             if (password_verify($contrasena, $hashedPassword)) {
                 session_start();
                 $_SESSION['mensaje_exito'] = 'Inicio de sesión exitoso';
-                $_SESSION['id_usuario'] = $id_user;
                 header("Location: index.php");
             } else {
                 $error = "Usuario o contraseña incorrectos";

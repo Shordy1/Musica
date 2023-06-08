@@ -13,7 +13,6 @@
       $correo = $_POST["correo"];
       $direccion = $_POST["direccion"];
       $contra = $_POST["contra"];
-     
 
       $statement2 = $conn->prepare("SELECT * FROM cliente WHERE correo = :correo");
       $statement2->bindParam(":correo", $correo);
@@ -26,7 +25,7 @@
         
     } else {
       $hash = password_hash($contra, PASSWORD_DEFAULT);
-      $statement = $conn->prepare("INSERT INTO cliente (rut_cliente, correo, nombre, contra, direccion, rol) VALUES (:rut, :correo, :nombre, :contra, :direccion,'1')");
+      $statement = $conn->prepare("INSERT INTO cliente (rut_cliente, correo, nombre, contra, direccion) VALUES (:rut, :correo, :nombre, :contra, :direccion)");
       $statement->bindParam(":rut", $_POST["rut"]);
       $statement->bindParam(":nombre", $_POST["nombre"]);
       $statement->bindParam(":correo", $_POST["correo"]);

@@ -1,21 +1,6 @@
 <?php
 require "bdCreate.php";
 session_start();
-
-
-
-if (isset($_SESSION["id_usuario"])) {
-    $statement = $conn->prepare("SELECT * FROM cliente WHERE id_cliente = {$_SESSION['id_usuario']} ");
-    $statement->execute();
-  
-    $usuario = $statement->fetch(PDO::FETCH_ASSOC);
-
-    if (!$usuario) {
-        unset($_SESSION["id_usuario"]);
-    }
-}
-
-
 ?>
 
 
@@ -47,32 +32,10 @@ if (isset($_SESSION["id_usuario"])) {
 
         <a href="index.php" class="logo"> <i class="fa-sharp fa-solid fa-music fa-bounce">USIC.</i></a>
         <nav class="navbar">
-            <a href="#home"><i class="fa-solid fa-house fa-beat" ></i> Inicio</a>
+            <a href="#home"><i class="fa-solid fa-house fa-beat"></i> Inicio</a>
             <a href="#about"><i class="fa-solid fa-info fa-beat"></i> Información </a>
             <a href="#review"><i class="fa-solid fa-star fa-beat"></i> Reseña</a>
-            <a href="tienda.php"><i class="fa-solid fa-shop fa-beat" style="margin-right: 5px;"></i>Tienda</a>
-
-            <a href="Prov_usuario.php"><i class="fa-solid fa-user fa-beat" style="margin-right: 5px;"></i>
-
-             <?php 
-            if (isset($_SESSION['id_usuario'])){
-                $nombreCompleto = $usuario['nombre'];
-                $primerEspacio = strpos($nombreCompleto, ' ');
-                $primerosCaracteres = substr($nombreCompleto, 0, 10);
-    
-                if ($primerEspacio !== false && $primerEspacio < 10) {
-                    echo substr($nombreCompleto, 0, $primerEspacio);
-                } else {
-                    echo $primerosCaracteres;
-                    }
-
-                    
-            } else {
-
-               ?>Usuario<?php 
-            }
-              ?> </a>
-            <a href="Prov_carrito.php"><i class="fa-solid fa-cart-shopping fa-beat" style="margin-right: 5px;"></i>Carrito</a>
+            <a href="tienda.php"><i class="fa-solid fa-shop fa-beat"></i>Tienda</a>
         </nav>
         <div id="menu-btn" class="fas fa-bars"></div>
     </header>
@@ -113,7 +76,6 @@ if (isset($_SESSION["id_usuario"])) {
             <h3>80+</h3>
             <p>sedes disponibles</p>
         </div>
-        
     </section>
     <!-- Icons section end-->
 

@@ -5,46 +5,28 @@
   $error = null;
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["rut"]) || empty($_POST["nombre"]) ||  empty($_POST["correo"]) ||  empty($_POST["direccion"]) ||  empty($_POST["contra"]) ||  empty($_POST["repContra"]) ) {
+    if (empty($_POST["nombre"]) || empty($_POST["foto"]) ||  empty($_POST["descripcion"]) ||  empty($_POST["marca"]) ||  empty($_POST["modelo"]) ||  empty($_POST["precio"]) ) {
       $error = "Rellene los campos.";
     } else {
-      $rut = $_POST["rut"];
       $nombre = $_POST["nombre"];
-      $correo = $_POST["correo"];
-      $direccion = $_POST["direccion"];
-      $contra = $_POST["contra"];
-     
+      $foto = $_POST["foto"];
+      $descripcion = $_POST["descripcion"];
+      $marca = $_POST["marca"];
+      $modelo = $_POST["modelo"];
+      $precio = $_POST["precio"];
 
-      $statement2 = $conn->prepare("SELECT * FROM cliente WHERE correo = :correo");
-      $statement2->bindParam(":correo", $correo);
-      $statement2->execute();
-      if ($statement2->rowCount() > 0) {
-
-
-        $error = "Ya existe una cuenta con ese correo";
-        
-        
-    } else {
-      $hash = password_hash($contra, PASSWORD_DEFAULT);
-      $statement = $conn->prepare("INSERT INTO cliente (rut_cliente, correo, nombre, contra, direccion, rol) VALUES (:rut, :correo, :nombre, :contra, :direccion,'1')");
-      $statement->bindParam(":rut", $_POST["rut"]);
+    
+      $statement = $conn->prepare("INSERT INTO producto (nombre, foto, descripcion, marca, modelo, precio) VALUES (:nombre, :foto, :descripcion, :marca, :modelo, :precio)");
       $statement->bindParam(":nombre", $_POST["nombre"]);
-      $statement->bindParam(":correo", $_POST["correo"]);
-      $statement->bindParam(":direccion", $_POST["direccion"]);
-      $statement->bindParam(":contra", $hash);  
+      $statement->bindParam(":foto", $_POST["foto"]);
+      $statement->bindParam(":descripcion", $_POST["descripcion"]);
+      $statement->bindParam(":marca", $_POST["marca"]);
+      $statement->bindParam(":modelo", $_POST["modelo"]);  
+      $statement->bindParam(":precio", $_POST["precio"]);  
       $statement->execute();
     
-      
-     session_start();
-     $_SESSION['mensaje_exito'] = 'Usuario creado correctamente';
-
-
-      header("Location: index.php");
-
-    }
-
-
-      
+      header("Location: tienda.php");
+    
     }
   }
 ?>
@@ -80,30 +62,33 @@
         
         <img src="static/img/back.jpg" class="bg">
 
-        <form method="POST" action="register.php"  name="form1" id="form1" style="margin-right: 2%; ">
+        <form method="POST" action="add-prod.php"  name="form1" id="form1" style="margin-right: 2%; ">
             <div class="login">
-                <h2>Crear cuenta</h2>
+                <h2>Agregar Producto</h2>
+               
                 <div class="inputBox">
-                    <input id="rut" name="rut" type="text" placeholder="Rut">
+                    <input id="nombre" name="nombre" type="text" placeholder="Nombre Producto">
                 </div>
                 <div class="inputBox">
-                    <input id="nombre" name="nombre" type="text" placeholder="Nombre">
+                    <input id="foto" name="foto" type="text" placeholder="foto">
                 </div>
                 <div class="inputBox">
-                    <input id="correo" name="correo" type="text" placeholder="Correo">
+                    <input id="descripcion" name="descripcion" type="text" placeholder="descripcion">
                 </div>
                 <div class="inputBox">
-                    <input id="direccion" name="direccion" type="text" placeholder="Direccion">
+                    <input id="marca" name="marca" type="text" placeholder="marca">
                 </div>
                 <div class="inputBox">
-                    <input id="contra" name="contra" type="password" placeholder="Contraseña">
+                    <input id="modelo" name="modelo" type="text" placeholder="modelo">
                 </div>
                 <div class="inputBox">
-                    <input id="repContra" name="repContra" type="password" placeholder="Repetir Contraseña">
+                    <input id="precio" name="precio" type="number" placeholder="precio">
                 </div>
+                
                 <div class="inputBox">
-                    <input type="submit" value="Crear" id="btn">
+                    <input type="submit" value="Agregar" id="btn">
                 </div>
+
                 <?php if ($error): ?>
                     <p   class="error-box" id="errorM" >
                          <?= $error ?>
@@ -125,6 +110,6 @@
 
 
     
-    <script src="static/js/Validacion.js"></script>
+    <!-- <script src="static/js/Validacion.js"></script> -->
 </body>
 </html>
