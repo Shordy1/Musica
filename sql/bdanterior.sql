@@ -1,4 +1,5 @@
 DROP DATABASE IF EXISTS music_app;
+
 CREATE DATABASE music_app;
 
 USE music_app;
@@ -8,13 +9,6 @@ CREATE TABLE rol (
     nombre_rol VARCHAR(50)
 );
 
-
-CREATE TABLE sucursal ( 
-    id_sucursal INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(10),
-    direccion VARCHAR(100)
-);
-
 CREATE TABLE trabajador ( 
     id_trabajador INT AUTO_INCREMENT PRIMARY KEY,
     rut VARCHAR(10),
@@ -22,30 +16,33 @@ CREATE TABLE trabajador (
     contra VARCHAR(30),
     nombre VARCHAR(50),
     id_rol INT,
-    FOREIGN KEY (id_rol) REFERENCES rol(id_rol),
-    id_sucursal INT,
-    FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal)
+    FOREIGN KEY (id_rol) REFERENCES rol(id_rol)
+);
+
+CREATE TABLE sucursal ( 
+    id_sucursal INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(10),
+    direccion VARCHAR(100),
+    id_trabajador INT,
+    FOREIGN KEY (id_trabajador) REFERENCES trabajador(id_trabajador)
 );
 
 
 CREATE TABLE producto ( 
     id_producto INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100),
-    foto VARCHAR(100),
     descripcion VARCHAR(200),
     marca VARCHAR(100),
-    modelo VARCHAR(100),
-    precio INT
+    modelo VARCHAR(100)
 );
-
 
 CREATE TABLE stock ( 
     id_stock INT AUTO_INCREMENT PRIMARY KEY,
-    descuento INT,
-    cantidad INT,
-    id_producto INT, 
-    id_sucursal INT,
+    id_producto INT,
+    precio INT,
+    descuento INT, # en porcentaje %
     FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
+    id_sucursal INT,
     FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal)
 );
 
@@ -53,8 +50,7 @@ CREATE TABLE stock (
 CREATE TABLE orden ( 
     id_orden INT AUTO_INCREMENT PRIMARY KEY,
     estado VARCHAR(100),
-    id_producto INT,
-    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+    id_producto INT
 );
 
 
@@ -74,15 +70,6 @@ CREATE TABLE prod_carrito (
     id_stock INT,
     FOREIGN KEY (id_stock) REFERENCES stock(id_stock)
 );
-CREATE TABLE cliente ( 
-    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
-    rut_cliente VARCHAR(10),
-    correo VARCHAR(100),
-    nombre VARCHAR(100),
-    contra VARCHAR(255),
-    direccion VARCHAR(100),
-    rol VARCHAR(2)
-);
 
 CREATE TABLE carrito_compra ( 
     id_carrito_compra INT AUTO_INCREMENT PRIMARY KEY,
@@ -92,6 +79,14 @@ CREATE TABLE carrito_compra (
     FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
 );
 
+CREATE TABLE cliente ( 
+    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+    rut_cliente VARCHAR(10),
+    correo VARCHAR(100),
+    nombre VARCHAR(100),
+    contra VARCHAR(255),
+    direccion VARCHAR(100)
+);
 
 
 CREATE TABLE pedido ( 
@@ -117,20 +112,3 @@ INSERT INTO rol (nombre_rol) VALUES ("Vendedor");
 INSERT INTO trabajador ( rut, correo, contra, nombre, id_rol) VALUES ("20168548-2","ad@ad.cl","1234","Bodeguero",1);
 INSERT INTO trabajador ( rut, correo, contra, nombre, id_rol) VALUES ("22528548-2","ad2@ad2.cl","122434","Vendedor",2);
 
-#sucursal
-INSERT INTO sucursal ( nombre, direccion) VALUES ("Sucursal plaza norte","Mall plaza norte");
-
-#producto 
-INSERT INTO producto (nombre, descripcion, marca, modelo, foto, precio) VALUES ("Guitarra", "Guitarra eléctrica", "Fender", "modelo323", "static/img/electrica.webp","340000");
-INSERT INTO producto (nombre, descripcion, marca, modelo, foto, precio) VALUES ("Piano", "Piano de cola", "Yamaha", "modelo123", "static/img/piano.webp","870000");
-INSERT INTO producto (nombre, descripcion, marca, modelo, foto, precio) VALUES ("Bateria", "Bateria completa", "Pearl", "modelo456", "static/img/bateria.webp","450000");
-INSERT INTO producto (nombre, descripcion, marca, modelo, foto, precio) VALUES ("Teclado", "Teclado electrico", "Yamaha", "modelo789", "static/img/teclado.webp","150000");
-INSERT INTO producto (nombre, descripcion, marca, modelo, foto, precio) VALUES ("Violin", "Violín clásico", "Stradivarius", "modelo987", "static/img/violin.webp","75000");
-
-#stock 
-
-INSERT INTO stock ( descuento, cantidad, id_producto, id_sucursal ) VALUES ( 0, 12, 1, 1);
-INSERT INTO stock ( descuento, cantidad, id_producto, id_sucursal ) VALUES ( 0, 14, 2, 1);
-INSERT INTO stock ( descuento, cantidad, id_producto, id_sucursal ) VALUES ( 0, 5, 3, 1);
-INSERT INTO stock ( descuento, cantidad, id_producto, id_sucursal ) VALUES ( 0, 3, 4, 1);
-INSERT INTO stock ( descuento, cantidad, id_producto, id_sucursal ) VALUES ( 0, 7, 5, 1);
